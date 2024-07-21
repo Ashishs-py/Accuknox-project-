@@ -32,7 +32,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: ${{ secrets.REGISTRY }}/wisecow:latest
+        tags: ashish5ojha/wisecow:latest
 
   deploy:
     needs: build
@@ -51,8 +51,4 @@ jobs:
       run: kubectl config set-context --current --namespace=default
 
     - name: Apply Kubernetes manifests
-      run: |
-        kubectl apply -f k8s/deployment.yml
-        kubectl apply -f k8s/service.yaml
-        kubectl apply -f k8s/ingress-nginx-deployment.yaml
-        kubectl apply -f k8s/wisecow-ingress.yaml
+      run: kubectl apply -f k8s/
